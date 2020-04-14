@@ -15,4 +15,5 @@ const str3 = concatPigs(str2);
 
 const str4 = concatParam(str2, str3);
 
-console.assert(str4 === _, 'assert str4');
+console.assert(str4 === " pigs  rock!  pigs  rock! pigs"
+, 'assert str4');

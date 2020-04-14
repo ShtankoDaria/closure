@@ -2,15 +2,15 @@
 
 ## /3-closed-variables
 
-> uncaught error: 4/11/2020, 4:31:30 PM 
+> no status: 4/14/2020, 6:01:05 PM 
 
 [../REVIEW.md](../REVIEW.md)
 
 * [/example-1-a-free-variable.js](#example-1-a-free-variablejs) - example - no status
 * [/example-2-not-from-closure.js](#example-2-not-from-closurejs) - example - no status
 * [/example-3-from-closure.js](#example-3-from-closurejs) - example - no status
-* [/exercise-1.js](#exercise-1js) - uncaught error
-* [/exercise-2.js](#exercise-2js) - uncaught error
+* [/exercise-1.js](#exercise-1js) - no status
+* [/exercise-2.js](#exercise-2js) - no status
 
 ---
 
@@ -102,28 +102,13 @@ closure1("second call to closure1");
 
 ## /exercise-1.js
 
-* uncaught error
+* no status
 * [review source](./exercise-1.js)
-
-```txt
-- FAIL : assert 1
-- FAIL : assert 2
-ReferenceError: _ is not defined
-    at Object.<anonymous> ( [ ... ] /exercises/3-closed-variables/exercise-1.js:14:40)
-    at Module._compile (internal/modules/cjs/loader.js:777:30)
-    at Object.Module._extensions..js (internal/modules/cjs/loader.js:788:10)
-    at Module.load (internal/modules/cjs/loader.js:643:32)
-    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
-    at Module.require (internal/modules/cjs/loader.js:683:19)
-    at require (internal/modules/cjs/helpers.js:16:16)
-    at evaluate ( [ ... ] /review.js:229:7)
-    at Object.<anonymous> ( [ ... ] /review.js:244:1)
-    at Module._compile (internal/modules/cjs/loader.js:777:30)
-```
 
 ```js
 const usesParentVariable = (param) => {
   // write me!
+  return param + parentScopeVariable + 'local';
 };
 
 let parentScopeVariable = "parentScope";
@@ -135,13 +120,13 @@ const result2 = usesParentVariable(undefined);
 console.assert(result2 === "undefinedparentScopelocal", "assert 2");
 
 parentScopeVariable = usesParentVariable("spoon");
-console.assert(parentScopeVariable === _, "assert 3");
+console.assert(parentScopeVariable === "spoonparentScopelocal", "assert 3");
 
-const result3 = usesParentVariable(_);
+const result3 = usesParentVariable("");
 console.assert(result3 === "spoonparentScopelocallocal", "assert 4");
 
 parentScopeVariable = usesParentVariable("spoon");
-console.assert(parentScopeVariable === _, "assert 5");
+console.assert(parentScopeVariable === "spoonspoonparentScopelocallocal", "assert 5");
 
 ```
 
@@ -151,26 +136,15 @@ console.assert(parentScopeVariable === _, "assert 5");
 
 ## /exercise-2.js
 
-* uncaught error
+* no status
 * [review source](./exercise-2.js)
-
-```txt
-TypeError: closure1 is not a function
-    at Object.<anonymous> ( [ ... ] /exercises/3-closed-variables/exercise-2.js:8:17)
-    at Module._compile (internal/modules/cjs/loader.js:777:30)
-    at Object.Module._extensions..js (internal/modules/cjs/loader.js:788:10)
-    at Module.load (internal/modules/cjs/loader.js:643:32)
-    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
-    at Module.require (internal/modules/cjs/loader.js:683:19)
-    at require (internal/modules/cjs/helpers.js:16:16)
-    at evaluate ( [ ... ] /review.js:229:7)
-    at Object.<anonymous> ( [ ... ] /review.js:244:1)
-    at Module._compile (internal/modules/cjs/loader.js:777:30)
-```
 
 ```js
 const closesParentParamter = (parentParam) => {
   // write me!
+  return function(smth) {
+		return smth.split('').join(parentParam).trim();
+	};
 };
 
 const closure1 = closesParentParamter("|");
@@ -183,18 +157,18 @@ const result2 = closure2("+(=)+");
 console.assert(result2 === "+~(~=~)~+", "assert 2");
 
 const result3 = closure1("abc");
-console.assert(result3 === _, "assert 3");
+console.assert(result3 === "a|b|c", "assert 3");
 
 const result4 = closure2("xyz");
-console.assert(result4 === _, "assert 4");
+console.assert(result4 === "x~y~z", "assert 4");
 
 
-const closure3 = closesParentParamter(_);
-const result5 = closure3(_);
+const closure3 = closesParentParamter("--");
+const result5 = closure3(" 01 ");
 console.assert(result5 === "--0--1--", "assert 5");
 
-const closure4 = closesParentParamter(_);
-const result6 = closure4(_);
+const closure4 = closesParentParamter("--");
+const result6 = closure4(" 10 ");
 console.assert(result6 === "--1--0--", "assert 6");
 
 ```

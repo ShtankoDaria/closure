@@ -11,7 +11,7 @@ const closeIt = (str) => {
 
 let closedFunctions = closeIt("-");
 const concatPigs = closedFunctions[0], concatParam = closedFunctions[1];
-closedFunctions = _;
+closedFunctions = null;
 
 const str1 = concatPigs();
 
@@ -21,4 +21,4 @@ const str3 = concatPigs();
 
 const str4 = concatParam(str3);
 
-console.assert(str4 === _, 'assert str4');
+console.assert(str4 === "- pigs rock! pigs- pigs rock! pigs", 'assert str4');

@@ -26,3 +26,6 @@ console.assert(whenPassedAnArray === null, "... when passed an array");
 
 const whenPassedItself = doesItClose(never, never);
 console.assert(whenPassedItself === null, "... when passed itself");
+
+
+

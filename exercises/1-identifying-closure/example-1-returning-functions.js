@@ -18,3 +18,6 @@ console.assert(newFunction !== argFunc,
 
 // study this function call in JS Tutor to see closure in action:
 newFunction();
+
+
+

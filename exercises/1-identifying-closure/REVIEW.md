@@ -2,27 +2,22 @@
 
 ## /1-identifying-closure
 
-> uncaught error: 4/11/2020, 4:31:30 PM 
+> no status: 4/14/2020, 6:01:05 PM 
 
 [../REVIEW.md](../REVIEW.md)
 
-* [/example-1-returning-functions.js](#example-1-returning-functionsjs) - example - pass
-* [/example-2-never-creates-closure.js](#example-2-never-creates-closurejs) - example - fail
+* [/example-1-returning-functions.js](#example-1-returning-functionsjs) - example - no status
+* [/example-2-never-creates-closure.js](#example-2-never-creates-closurejs) - example - no status
 * [/example-3-always-creates-closure.js](#example-3-always-creates-closurejs) - example - no status
-* [/example-4-sometimes-creates-closure-a.js](#example-4-sometimes-creates-closure-ajs) - example - uncaught error
-* [/example-5-sometimes-creates-closure-b.js](#example-5-sometimes-creates-closure-bjs) - example - uncaught error
+* [/example-4-sometimes-creates-closure-a.js](#example-4-sometimes-creates-closure-ajs) - example - no status
+* [/example-5-sometimes-creates-closure-b.js](#example-5-sometimes-creates-closure-bjs) - example - no status
 
 ---
 
 ## /example-1-returning-functions.js
 
-* example - pass
+* example - no status
 * [review source](./example-1-returning-functions.js)
-
-```txt
-+ PASS : no closure created, the returned function was declared outside of "returnsOldfunction"
-+ PASS : a closure is created! the returned function was declared inside of "returnsNewFunction"
-```
 
 ```js
 // functions can return functions that were passed as arguments
@@ -46,6 +41,9 @@ console.assert(newFunction !== argFunc,
 // study this function call in JS Tutor to see closure in action:
 newFunction();
 
+
+
+
 ```
 
 [TOP](#event-loop)
@@ -54,15 +52,8 @@ newFunction();
 
 ## /example-2-never-creates-closure.js
 
-* example - fail
+* example - no status
 * [review source](./example-2-never-creates-closure.js)
-
-```txt
-- FAIL : ... when passed 4
-- FAIL : ... when passed a function
-- FAIL : ... when passed an array
-- FAIL : ... when passed itself
-```
 
 ```js
 // any function that returns a new function creates a closure
@@ -93,6 +84,9 @@ console.assert(whenPassedAnArray === null, "... when passed an array");
 
 const whenPassedItself = doesItClose(never, never);
 console.assert(whenPassedItself === null, "... when passed itself");
+
+
+
 
 ```
 
@@ -148,22 +142,8 @@ alwaysLogs4(), alwaysLogsHi(), alwaysLogsArray(), alwaysLogsAlways();
 
 ## /example-4-sometimes-creates-closure-a.js
 
-* example - uncaught error
+* example - no status
 * [review source](./example-4-sometimes-creates-closure-a.js)
-
-```txt
-ReferenceError: x is not defined
-    at hi ( [ ... ] /exercises/1-identifying-closure/example-4-sometimes-creates-closure-a.js:30:30)
-    at Object.<anonymous> ( [ ... ] /exercises/1-identifying-closure/example-4-sometimes-creates-closure-a.js:32:1)
-    at Module._compile (internal/modules/cjs/loader.js:777:30)
-    at Object.Module._extensions..js (internal/modules/cjs/loader.js:788:10)
-    at Module.load (internal/modules/cjs/loader.js:643:32)
-    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
-    at Module.require (internal/modules/cjs/loader.js:683:19)
-    at require (internal/modules/cjs/helpers.js:16:16)
-    at evaluate ( [ ... ] /review.js:229:7)
-    at Object.<anonymous> ( [ ... ] /review.js:244:1)
-```
 
 ```js
 const doesItClose = (func, arg) => {
@@ -207,22 +187,8 @@ resultFromFunction();
 
 ## /example-5-sometimes-creates-closure-b.js
 
-* example - uncaught error
+* example - no status
 * [review source](./example-5-sometimes-creates-closure-b.js)
-
-```txt
-TypeError: resultFrom4 is not a function
-    at Object.<anonymous> ( [ ... ] /exercises/1-identifying-closure/example-5-sometimes-creates-closure-b.js:32:1)
-    at Module._compile (internal/modules/cjs/loader.js:777:30)
-    at Object.Module._extensions..js (internal/modules/cjs/loader.js:788:10)
-    at Module.load (internal/modules/cjs/loader.js:643:32)
-    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
-    at Module.require (internal/modules/cjs/loader.js:683:19)
-    at require (internal/modules/cjs/helpers.js:16:16)
-    at evaluate ( [ ... ] /review.js:229:7)
-    at Object.<anonymous> ( [ ... ] /review.js:244:1)
-    at Module._compile (internal/modules/cjs/loader.js:777:30)
-```
 
 ```js
 const doesItClose = (func, arg) => {
